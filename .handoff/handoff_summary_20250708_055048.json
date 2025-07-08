@@ -1,0 +1,110 @@
+{
+  "created_at": "2025-07-08T05:50:48.482153",
+  "project_root": "/Users/bird/sources/aiterm",
+  "current_context": {
+    "project_name": "MCP Unified Configuration",
+    "description": "Unified configuration system for Model Context Protocol servers",
+    "current_branch": "",
+    "working_directory": "/Users/bird/sources/aiterm"
+  },
+  "active_tasks": [],
+  "recent_changes": {
+    "recent_commits": [
+      ""
+    ],
+    "uncommitted_changes": []
+  },
+  "key_files": [
+    {
+      "path": "README.md",
+      "size": 5328,
+      "modified": "2025-07-08T04:20:11.572287"
+    }
+  ],
+  "dependencies": {
+    "node": {
+      "dependencies": [
+        "@electron-toolkit/utils",
+        "@ollama/sdk",
+        "@raycast/api",
+        "applescript",
+        "cmdk",
+        "electron-store",
+        "express",
+        "fuse.js",
+        "langchain",
+        "lucide-react",
+        "node-pty",
+        "react",
+        "react-dom",
+        "robotjs",
+        "socket.io",
+        "socket.io-client",
+        "xterm",
+        "xterm-addon-fit",
+        "xterm-addon-search",
+        "xterm-addon-web-links",
+        "zustand"
+      ],
+      "devDependencies": [
+        "@electron-toolkit/tsconfig",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom",
+        "@vitejs/plugin-react",
+        "autoprefixer",
+        "electron",
+        "electron-builder",
+        "electron-vite",
+        "eslint",
+        "postcss",
+        "tailwindcss",
+        "typescript",
+        "vite",
+        "vitest"
+      ]
+    }
+  },
+  "configuration": {
+    "version": "1.0.0",
+    "servers": [
+      "filesystem",
+      "puppeteer",
+      "github",
+      "memory",
+      "context-7",
+      "chroma",
+      "taskmaster-ai",
+      "desktop-commander",
+      "ai-logging",
+      "railway-mcp",
+      "railway",
+      "applescript_execute",
+      "notionApi",
+      "redis-handoff",
+      "linear"
+    ],
+    "targets": [
+      "claude_desktop",
+      "raycast",
+      "claude_code",
+      "ollama",
+      "goose",
+      "gemini"
+    ],
+    "sync_enabled": true
+  },
+  "next_steps": [
+    "Create GitHub repository and add remote",
+    "Create PRs for completed tasks (2, 3, 4)"
+  ],
+  "orchestration_analysis": {
+    "mode_recommendation": "single_agent",
+    "reasoning": [
+      "Low complexity - single agent sufficient"
+    ],
+    "complexity_score": 0,
+    "dependencies_found": [],
+    "next_agent": "claude-code"
+  }
+}
