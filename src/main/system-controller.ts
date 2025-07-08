@@ -5,13 +5,30 @@ import { promisify } from 'util'
 const execAsync = promisify(exec)
 const runAppleScript = promisify(applescript.execString)
 
+/**
+ * Represents a system automation action
+ */
 export interface SystemAction {
+  /** Type of action to perform */
   type: 'applescript' | 'command' | 'keypress' | 'window'
+  /** The action content (script, command, etc.) */
   action: string
+  /** Optional parameters for the action */
   params?: any
 }
 
+/**
+ * Handles system-level automation and control.
+ * Provides AppleScript execution, shell commands, window management,
+ * and keyboard simulation capabilities.
+ */
 export class SystemController {
+  /**
+   * Executes a system action based on its type
+   * @param action - The system action to execute
+   * @returns The result of the action (varies by type)
+   * @throws Error if action type is unknown or execution fails
+   */
   async execute(action: SystemAction): Promise<any> {
     switch (action.type) {
       case 'applescript':

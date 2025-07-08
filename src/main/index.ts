@@ -1,3 +1,7 @@
+/**
+ * Main entry point for AITerm Electron application.
+ * Manages the main process, window creation, and IPC handlers.
+ */
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
@@ -12,6 +16,9 @@ let aiOrchestrator: AIOrchestrator
 let systemController: SystemController
 let raycastAdapter: RaycastAdapter
 
+/**
+ * Creates the main application window with macOS-style UI
+ */
 function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 1400,

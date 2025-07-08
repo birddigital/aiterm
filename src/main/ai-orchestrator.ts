@@ -1,30 +1,57 @@
 import { Ollama } from 'ollama'
 
+/**
+ * Represents an AI model configuration
+ */
 export interface AIModel {
+  /** Unique model identifier */
   id: string
+  /** Human-readable model name */
   name: string
+  /** Model size (e.g., "70B", "34B") */
   size: string
+  /** List of model capabilities */
   capabilities: string[]
+  /** Maximum context length in tokens */
   contextLength: number
 }
 
+/**
+ * Configuration for an AI query
+ */
 export interface AIQuery {
+  /** The user's prompt or question */
   prompt: string
+  /** Optional context to enhance the query */
   context?: {
+    /** Recent terminal output */
     terminalOutput?: string
+    /** Current working directory */
     currentDirectory?: string
+    /** Recent command history */
     recentCommands?: string[]
+    /** Selected text from terminal */
     selectedText?: string
   }
+  /** Specific model to use (overrides default) */
   model?: string
+  /** Whether to stream the response */
   stream?: boolean
 }
 
+/**
+ * Manages AI model interactions and query routing.
+ * Connects to local Ollama instance and provides intelligent
+ * model selection based on query type and context.
+ */
 export class AIOrchestrator {
   private ollama: Ollama
   private models: Map<string, AIModel> = new Map()
   private activeModel: string = 'llama3.2:70b'
 
+  /**
+   * Creates a new AI orchestrator instance
+   */
   constructor() {
     this.ollama = new Ollama({
       host: 'http://localhost:11434'
@@ -64,6 +91,10 @@ export class AIOrchestrator {
     })
   }
 
+  /**
+   * Initializes the AI orchestrator and ensures required models are available
+   * @throws Error if unable to connect to Ollama
+   */
   async initialize(): Promise<void> {
     try {
       // Check Ollama connection
@@ -83,6 +114,12 @@ export class AIOrchestrator {
     }
   }
 
+  /**
+   * Sends a query to the AI model with optional context
+   * @param prompt - The user's question or request
+   * @param context - Optional context to enhance the response
+   * @returns The AI model's response
+   */
   async query(prompt: string, context?: AIQuery['context']): Promise<string> {
     const systemPrompt = this.buildSystemPrompt(context)
     
